@@ -11,8 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('movies', function (Blueprint $table) {
-            $table->id();
-            $table->string('tmdb_id')->unique();
+            $table->string('id')->primary();
             $table->timestamps();
         });
     }

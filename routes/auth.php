@@ -60,5 +60,4 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/likes', [LikedMoviesController::class, 'store']);
     Route::delete('/likes/{movie_id}', [LikedMoviesController::class, 'destroy']);
-
 });

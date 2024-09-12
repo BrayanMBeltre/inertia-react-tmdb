@@ -10,7 +10,7 @@ class Movie extends Model
     use HasFactory;
 
     // fillable fields
-    protected $fillable = ['tmdb_id'];
+    protected $fillable = ['id'];
 
     /**
      * Likes from users

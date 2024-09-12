@@ -17,7 +17,7 @@ export default function Dashboard({
 	auth,
 	likes,
 }: PageProps<{
-	likes: Array<{ id: number; tmdb_id: number }>;
+	likes: Array<{ id: number }>;
 }>) {
 	const query = useQuery({
 		queryKey: ["popularMovies"],
@@ -68,7 +68,7 @@ export default function Dashboard({
 								{query.isSuccess &&
 									query.data.data.results.map((movie) => {
 										const isLiked = likes.some(
-											(like) => Number(like.tmdb_id) === Number(movie.id),
+											(like) => Number(like.id) === Number(movie.id),
 										);
 
 										return (

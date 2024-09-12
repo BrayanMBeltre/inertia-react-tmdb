@@ -15,24 +15,18 @@ class LikedMoviesController extends Controller
         ]);
 
         $movie = Movie::firstOrCreate([
-            "tmdb_id" => $request->movie_id,
+            "id" => $request->movie_id,
         ]);
-
 
         $request->user()->likedMovies()->attach($movie->id);
 
-        return to_route('dashboard');
+        return;
     }
 
     public function destroy(Request $request, string $id)
     {
+        $request->user()->likedMovies()->detach($id);
 
-        $movie = Movie::firstWhere([
-            'tmdb_id' => $id,
-        ]);
-
-        $request->user()->likedMovies()->detach($movie->id);
-
-        return to_route('dashboard');
+        return;
     }
 }
