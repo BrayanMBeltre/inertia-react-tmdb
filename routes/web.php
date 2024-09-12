@@ -17,13 +17,14 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
+    $likedMovies = auth()->user()->likedMovies;
+
     return Inertia::render('Dashboard', [
-        'likes' => User::where('id', auth()->id())->first()->likedMovies,
+        'likes' => $likedMovies,
     ]);
 })
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
